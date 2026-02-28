@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #fdeff9;
+            background-image: url('https://media1.tenor.com/m/noDvqq4NAa4AAAAC/card-captor-sakura-cherry-blossom.gif');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        #heart {
+            cursor: pointer;
+            width: 400px;
+            height: 400px;
+            background-image: url('/FB_IMG_1704941406660.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 50% 90%, 0% 100%, 0% 35%);
+            transition: transform 0.5s;
+        }
+        #message {
+            display: none;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 2s;
+            text-align: center;
+            color: black;
+            position: relative;
+        }
+        #message h2 {
+            display: inline-block;
+            max-width: 400px;
+        }
+        #close-button {
+            position: absolute;
+            top: 50%;
+            left: -40px;
+            background-color: #ff99cc;
+            border: none;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-50%);
+        }
+        #gif-container {
+            display: none;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .love-gif {
+            width: 200px;
+            height: 200px;
+        }
+        .heart-clicked {
+            transform: scale(0.8);
+        }
+        .heart-clicked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-image: url('/FB_IMG_1704941406660.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 50% 90%, 0% 100%, 0% 35%);
+            animation: splash 1s infinite;
+        }
+        @keyframes splash {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="heart"></div>
+    <div id="message">
+        <button id="close-button" onclick="goToHome()">&#10084;</button>
+        <h2>En el jardín de mi vida, florece una flor,
+            una orquídea radiante, que despierta mi amor.
+            Tus ojos, dos luceros, que en la noche brillan más,
+            y tu risa, melodía, que no puedo olvidar.
+            
+            Eres mi sol en el día, mi luna en la oscuridad,
+            mi brújula y mi guía, mi paz en la tempestad.
+            Eres sueño en mis noches, y en mis días, realidad,
+            eres la melodía, de mi más dulce cantar.
+            
+            "Te amo", dice el viento, en su suave susurrar,
+            "Te amo", repite el mar, con su eterno marear.
+            "Te amo", canta el jilguero, con su trino matinal,
+            "Te amo", eco eterno, de mi corazón leal.
+            
+            Eres mi todo, Yami, mi alegría y mi razón,
+            mi sueño y mi despertar, mi más dulce canción.
+            Y en cada latido, y en cada respiración,
+            te llevo conmigo, en mi alma y mi corazón.
+            
+            Espero te guste este poemitaa:C 💖</h2>
+    </div>
+    <div id="gif-container">
+        <img class="love-gif" src="https://media.tenor.com/9V_G8kiWtToAAAAi/lily-and-marigold.gif" alt="Love GIF">
+        <img class="love-gif" src="https://media1.tenor.com/m/i9YrM3-Smo0AAAAC/lily-marigold-jun-lemon.gif" alt="Love GIF">
+    </div>
+
+    <script>
+        function goToHome() {
+            var message = document.getElementById('message');
+            message.classList.add('fade-out');
+            setTimeout(function() {
+                message.style.display = 'none';
+                message.classList.remove('fade-out');
+            }, 1000);
+            
+            var heart = document.getElementById('heart');
+            heart.classList.remove('heart-clicked');
+            
+            var gifContainer = document.getElementById('gif-container');
+            gifContainer.style.display = 'none';
+        }
+        
+        document.getElementById('heart').addEventListener('click', function() {
+            var heart = document.getElementById('heart');
+            heart.classList.add('heart-clicked');
+            
+            var message = document.getElementById('message');
+            message.style.display = 'block';
+            setTimeout(function() {
+                message.style.opacity = '1';
+            }, 100);
+            
+            var gifContainer = document.getElementById('gif-container');
+            gifContainer.style.display = 'flex';
+        });
+    </script>
+</body>
+</html>
